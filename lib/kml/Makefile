@@ -1,6 +1,8 @@
-obj-m := kml.o
+#obj-m := kml.o
+obj-y := kml.o
 
-KBUILD_CFLAGS += -I/home/kml/include
+
+KBUILD_CFLAGS += -I/home/coke/Desktop/os/kernel-ml/include
 
 kml-objs := ../../../src/kml_kernel.o ../../../src/optimizers/sgd_optimizer.o ../../../src/models/model.o ../../../src/models/xor_net.o ../../../src/models/linear_regression.o ../../../src/math/linear_algebra.o ../../../src/math/matrix.o ../../../src/math/math.o ../../../src/lib/kml_lib.o ../../../src/lib/kml_memory_allocator.o ../../../src/autodiff/autodiff.o ../../../src/utility/utility.o ../../../src/layers/layers.o ../../../src/layers/linear.o ../../../src/layers/sigmoid.o ../../../src/functions/cross_entropy_loss.o ../../../src/functions/square_loss.o ../../../src/functions/binary_cross_entropy_loss.o ../../../src/functions/loss.o ../../../kernel-interfaces/io_scheduler_linear.o
 

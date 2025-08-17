@@ -7,6 +7,9 @@
 
 #define __GENERATING_BOUNDS_H
 /* Include headers that define the enum constants of interest */
+#include <linux/types.h>
+#include <linux/atomic.h>
+
 #include <linux/page-flags.h>
 #include <linux/mmzone.h>
 #include <linux/kbuild.h>

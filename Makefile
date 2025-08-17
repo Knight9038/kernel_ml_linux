@@ -787,6 +787,10 @@ endif
 
 # arch Makefile may override CC so keep this after arch Makefile is included
 NOSTDINC_FLAGS += -nostdinc -isystem $(shell $(CC) -print-file-name=include)
+#NOSTDINC_FLAGS += -I/usr/include -I/usr/include/x86_64-linux-gnu
+#NOSTDINC_FLAGS += -I/usr/lib/gcc/x86_64-linux-gnu/7/include
+#NOSTDINC_FLAGS += -I/usr/include
+#NOSTDINC_FLAGS += -I/usr/include/x86_64-linux-gnu
 
 # warn about C99 declaration after statement
 KBUILD_CFLAGS += $(call cc-option,-Wdeclaration-after-statement,)

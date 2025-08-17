@@ -2,7 +2,7 @@
 #
 # Makefile for the linux memory manager.
 #
-KBUILD_CFLAGS += -I/home/kml/include
+KBUILD_CFLAGS += -I/home/coke/Desktop/os/kernel-ml/include
 
 KASAN_SANITIZE_slab_common.o := n
 KASAN_SANITIZE_slab.o := n

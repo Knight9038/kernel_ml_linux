@@ -2,9 +2,15 @@
 #include <linux/kbuild.h>
 #include <linux/mod_devicetable.h>
 
+#include <linux/stddef.h> 
+
 #define DEVID(devid) DEFINE(SIZE_##devid, sizeof(struct devid))
 #define DEVID_FIELD(devid, field) \
 	DEFINE(OFF_##devid##_##field, offsetof(struct devid, field))
+//#define OFFSETOF_STRUCT_FIELD(type, field) offsetof(struct type, field)
+//#define DEVID_FIELD(devid, field) \
+	DEFINE(OFF_##devid##_##field, OFFSETOF_STRUCT_FIELD(devid, field))
+
 
 int main(void)
 {

@@ -2,7 +2,7 @@
 #
 # Makefile for the kernel block layer
 #
-KBUILD_CFLAGS += -I/home/umit/research/kernel-ml/kml/include
+KBUILD_CFLAGS += -I/home/coke/Desktop/os/kernel-ml/include
 
 obj-$(CONFIG_BLOCK) := bio.o elevator.o blk-core.o blk-tag.o blk-sysfs.o \
 			blk-flush.o blk-settings.o blk-ioc.o blk-map.o \
@@ -43,3 +43,34 @@ obj-$(CONFIG_BLK_SED_OPAL)	+= sed-opal.o
 CFLAGS_REMOVE_mq-adios.o += -mno-sse2
 CFLAGS_REMOVE_mq-adios.o += -mno-sse
 CFLAGS_REMOVE_mq-adios.o += -mno-mmx
+
+ccflags-y += -DKML_KERNEL
+
+#mq-adios-y += \
+	../../src/kml_kernel.o \
+    ../../src/autodiff/autodiff.o \
+	../../src/functions/binary_cross_entropy_loss.o \
+	../../src/functions/cross_entropy_loss.o \
+	../../src/functions/loss.o \
+	../../src/functions/square_loss.o \
+	../../src/layers/layers.o \
+	../../src/layers/linear.o \
+	../../src/layers/sigmoid.o \
+	../../src/lib/kml_lib.o \
+	../../src/lib/kml_memory_allocator.o \
+	../../src/math/linear_algebra.o \
+	../../src/math/math.o \
+	../../src/math/matrix.o \
+	../../src/models/linear_regression.o \
+    ../../src/models/model.o \
+    ../../src/models/xor_net.o \
+    ../../src/optimizers/sgd_optimizer.o \
+	../../src/utility/utility.o 
+#mq-adios-y += \
+    ../../src/autodiff/autodiff.o \
+	../../src/functions/loss.o \
+	../../src/lib/kml_lib.o \
+	../../src/lib/kml_memory_allocator.o \
+	../../src/models/linear_regression.o \
+    ../../src/models/model.o \
+    ../../src/models/xor_net.o 

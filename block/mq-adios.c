@@ -489,12 +489,42 @@ static int dd_init_queue(struct request_queue *q, struct elevator_type *e)
 
 	q->elevator = eq;
         
+	//kernel_fpu_begin();
+	//io_sched_linear = build_linear_regression(0.03, 10, 0.99, 2);
+    //    io_sched_linear->check_correctness = io_scheduler_linear_check_correction;
+	//set_random_matrix(io_sched_linear->w, modula);
+	//kernel_fpu_end();
+	
+	//
 	kernel_fpu_begin();
 	io_sched_linear = build_linear_regression(0.03, 10, 0.99, 2);
         io_sched_linear->check_correctness = io_scheduler_linear_check_correction;
-	set_random_matrix(io_sched_linear->w, modula);
-	kernel_fpu_end();
+	layer *_layer = io_sched_linear->layer_list->layer_list_head;//层
+	void *_l = NULL;//层信息
+	while (_layer) {
+		if (_layer->type == LINEAR_LAYER)
+			_l = (linear_layer *)_layer->internal;
+		else if (_layer->type == SIGMOID_LAYER)
+			_l = (sigmoid_layer *)_layer->internal;
+		else
+			_l = NULL;
 	
+		if (_l) {
+			if (_layer->type == LINEAR_LAYER) {
+				linear_layer* ll = (linear_layer*)_l;
+				if (ll->w)
+					set_random_matrix(ll->w, modula);
+			} else if (_layer->type == SIGMOID_LAYER) {
+				sigmoid_layer* sl = (sigmoid_layer*)_l;
+				if (sl->w)
+					set_random_matrix(sl->w, modula);
+			}
+		}
+	
+		_layer = _layer->next;
+	}
+	kernel_fpu_end();
+
 	return 0;
 }
 
